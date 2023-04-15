@@ -65,11 +65,11 @@ function generateTitleLinks(){
 
   let html = '';
 
-  const articles = querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector);
     for(let article of articles){
 
     /* get the article id */
-        const articleId = optArticleSelector.getAttribute('id');
+        const articleId = article.getAttribute('id');
         console.log(articleId);
     /* find the title element */
 
