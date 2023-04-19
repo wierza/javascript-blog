@@ -90,9 +90,19 @@ body {
 .list-horizontal {
   li {
     display: inline-block;
+    a {
+      color: green;
+      text-decoration: none;
+    }
   }
 }
 
+.titles {
+  a {
+    text-decoration: none;
+    color: brown;
+  }
+}
 /* Authors */
 
 .authors {
@@ -113,6 +123,10 @@ body {
   &.active {
     display: block;
   }
+}
+
+.post-title {
+  color: brown;
 }
 
 .post-author {
