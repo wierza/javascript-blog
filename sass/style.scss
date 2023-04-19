@@ -98,6 +98,9 @@ body {
 .authors {
   li {
     margin-bottom: 12px;
+    a {
+    text-decoration: none;
+    }
   }
 }
 
@@ -121,4 +124,25 @@ body {
   p {
     margin: 0 10px 0 0;
   }
+}
+
+/*Tags*/
+
+.tag-size-1 {
+  font-size: 75%;
+  color: green;
+  text-decoration: none;
+
+}
+
+.tag-size-3 {
+  font-size: 125%;
+  color: blue;
+  text-decoration: none;
+}
+
+.tag-size-5 {
+  font-size: 175%;
+  color: red;
+  text-decoration: none;
 }
