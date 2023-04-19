@@ -44,28 +44,30 @@ const titleClickHandler = function(event){
 
 };
 
-const optArticleSelector = '.post',
-  optTitleSelector = '.post-title',
-  optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list',
-  optAuthorSelector = '.post-author',
-  optTagsListSelector = '.tags.list',
-  optCloudClassCount = '5',
-  optCloudClassPrefix = 'tag-size-',
-  optAuthorsListSelector = '.authors.list';
+const opts = {
+  articleSelector: '.post',
+  titleSelector: '.post-title',
+  titleListSelector: '.titles',
+  articleTagsSelector: '.post-tags .list',
+  authorSelector: '.post-author',
+  tagsListSelector: '.tags.list',
+  cloudClassCount: '5',
+  cloudClassPrefix: 'tag-size-',
+  authorsListSelector: '.authors.list'
+};
 
 function generateTitleLinks(customSelector = ''){
   console.log(customSelector);
   /* remove contents of titleList */
 
-  const titleList = document.querySelector(optTitleListSelector);
+  const titleList = document.querySelector(opts.titleListSelector);
   titleList.innerHTML = '';
 
   /* for each article */
 
   let html = '';
 
-  const articles = document.querySelectorAll(optArticleSelector + customSelector);
+  const articles = document.querySelectorAll(opts.articleSelector + customSelector);
   console.log(articles);
   for(let article of articles){
 
@@ -75,7 +77,7 @@ function generateTitleLinks(customSelector = ''){
     /* find the title element */
 
     /* get the title from the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    const articleTitle = article.querySelector(opts.titleSelector).innerHTML;
     /* create HTML of the link */
 
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
@@ -119,8 +121,8 @@ function calculateTagClass(count, params){
   const normalizedCount = count - params.min;
   const normalizedMax = params.max - params.min;
   const percentage = normalizedCount / normalizedMax;
-  const classNumber = Math.floor( percentage * (optCloudClassCount - 1) + 1 );
-  return optCloudClassPrefix + classNumber;
+  const classNumber = Math.floor( percentage * (opts.cloudClassCount - 1) + 1 );
+  return opts.cloudClassPrefix + classNumber;
 }
 
 function generateTags(){
@@ -130,7 +132,7 @@ function generateTags(){
 
   /* find all articles */
 
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
 
   /* START LOOP: for every article: */
 
@@ -138,7 +140,7 @@ function generateTags(){
 
     /* find tags wrapper */
 
-    const tagList = article.querySelector(optArticleTagsSelector);
+    const tagList = article.querySelector(opts.articleTagsSelector);
     console.log(tagList);
 
     /* make html variable with empty string */
@@ -191,7 +193,7 @@ function generateTags(){
 
   /* [NEW] find list of tags in right column */
 
-  const tagList = document.querySelector(optTagsListSelector);
+  const tagList = document.querySelector(opts.tagsListSelector);
 
   /* [NEW] create variable for all links HTML code */
   const tagsParams = calculateTagsParams(allTags);
@@ -302,7 +304,7 @@ function generateAuthors(){
 
   /* find all articles */
 
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(opts.articleSelector);
 
   /* START LOOP: for every article: */
 
@@ -310,7 +312,7 @@ function generateAuthors(){
 
     /* find authors wrapper */
 
-    const authorList = article.querySelector(optAuthorSelector);
+    const authorList = article.querySelector(opts.authorSelector);
     console.log(authorList);
 
     /* make html variable with empty string */
@@ -350,7 +352,7 @@ function generateAuthors(){
   }
   /* [NEW] find list of authors in right column */
 
-  const authorList = document.querySelector(optAuthorsListSelector);
+  const authorList = document.querySelector(opts.authorsListSelector);
 
   /* [NEW] create variable for all links HTML code */
 
